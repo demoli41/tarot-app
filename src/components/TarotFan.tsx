@@ -2,29 +2,86 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-// --- НАЛАШТУВАННЯ ---
-const DISPLAY_COUNT = 22; 
-const ARC_ANGLE = 150; 
-// Зменшений радіус (було 550 -> 380)
-const RADIUS = 380; 
+// --- КОНФІГУРАЦІЇ ---
 
-// Розміри картки (виніс у змінні для зручності)
-const CARD_WIDTH = 105;  // Було 120
-const CARD_HEIGHT = 170; // Було 200
+const DESKTOP_CONFIG = {
+  cardWidth: 105,
+  cardHeight: 180,
+  radius: 380,
+  arcAngle: 150,
+  displayCount: 22,
+  yOffset: 0, 
+  containerHeight: "h-[300px]", 
+  marginTop: "mt-8 mb-16",      
+};
+
+const TABLET_CONFIG = {
+  cardWidth: 80,       
+  cardHeight: 135,     
+  radius: 280,         
+  arcAngle: 145,       
+  displayCount: 22,    
+  yOffset: 10,
+  containerHeight: "h-[240px]", 
+  marginTop: "mt-6 mb-12",
+};
+
+const MOBILE_CONFIG = {
+  cardWidth: 55,
+  cardHeight: 90,
+  radius: 180,
+  arcAngle: 140,
+  displayCount: 20,
+  yOffset: 20,
+  containerHeight: "h-[180px]",
+  marginTop: "mt-4 mb-8",
+};
+
+type DeviceType = 'mobile' | 'tablet' | 'desktop';
 
 export default function TarotFan() {
-  const cards = Array.from({ length: DISPLAY_COUNT }, (_, i) => i);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+  const [deviceType, setDeviceType] = useState<DeviceType>('desktop');
+  // State для hoveredIndex нам більше не потрібен для стилів, але може знадобитись для логіки
+  // (хоча зараз можна навіть прибрати, якщо не використовуємо для zIndex)
 
-  const startAngle = -ARC_ANGLE / 2;
-  const angleStep = ARC_ANGLE / (DISPLAY_COUNT - 1);
+  useEffect(() => {
+    setMounted(true);
+    
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setDeviceType('mobile');
+      } else if (width >= 768 && width < 1024) {
+        setDeviceType('tablet');
+      } else {
+        setDeviceType('desktop');
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const config = 
+    deviceType === 'mobile' ? MOBILE_CONFIG : 
+    deviceType === 'tablet' ? TABLET_CONFIG : 
+    DESKTOP_CONFIG;
+
+  const cards = Array.from({ length: config.displayCount }, (_, i) => i);
+  const startAngle = -config.arcAngle / 2;
+  const angleStep = config.arcAngle / (config.displayCount - 1);
+
+  if (!mounted) return <div className="h-[250px] w-full" />;
 
   return (
-    // Зменшив висоту контейнера, бо віяло стало меншим (h-[250px] md:h-[300px])
-    <div className="relative w-full h-[250px] md:h-[300px] flex justify-center items-end overflow-visible mt-8 mb-16 z-10">
-      
+    <div 
+      className={`relative w-full flex justify-center items-end overflow-visible z-10 transition-all duration-500
+      ${config.containerHeight} ${config.marginTop}`}
+    >
       <div className="relative w-1 h-1"> 
         {cards.map((index) => {
           const rotate = startAngle + index * angleStep;
@@ -32,27 +89,34 @@ export default function TarotFan() {
           return (
             <motion.div
               key={index}
-              className="absolute cursor-pointer shadow-xl rounded-lg" // rounded-xl -> rounded-lg
+              className="absolute cursor-pointer shadow-xl rounded-lg"
               style={{
-                width: `${CARD_WIDTH}px`,
-                height: `${CARD_HEIGHT}px`,
-                
-                // Центрування (половина ширини і повна висота в мінус)
-                left: `-${CARD_WIDTH / 2}px`, 
-                top: `-${CARD_HEIGHT}px`, 
-                
-                transformOrigin: `50% ${RADIUS}px`,
-                
+                width: `${config.cardWidth}px`,
+                height: `${config.cardHeight}px`,
+                left: `-${config.cardWidth / 2}px`, 
+                top: `-${config.cardHeight + 40 - config.yOffset}px`, 
+                transformOrigin: `50% ${config.radius}px`,
                 rotate: rotate,
-                zIndex: hoveredIndex === index ? 100 : index,
+                
+                // ЗМІНА ТУТ:
+                // Ми прибрали умову "hoveredIndex === index ? 100 : index"
+                // Тепер zIndex завжди дорівнює порядковому номеру.
+                // Карта №5 завжди буде ПІД картою №6, навіть якщо підніметься.
+                zIndex: index, 
               }}
+              
               whileHover={{
-                y: -50, // Зменшив амплітуду руху (було -80)
-                scale: 1.15,
-                zIndex: 200,
-                transition: { type: "spring", stiffness: 300, damping: 20 },
+                y: deviceType === 'mobile' ? -5 : -15, 
+                scale: 1.05, 
+                
+                // ЗМІНА ТУТ: 
+                // Ми видалили рядок "zIndex: 200".
+                // Карта більше не "вистрибує" на передній план.
+                
+                transition: { type: "spring", stiffness: 400, damping: 40 },
               }}
-              initial={{ rotate: 0, opacity: 0, y: RADIUS }} 
+              
+              initial={{ rotate: 0, opacity: 0, y: config.radius }} 
               animate={{ rotate: rotate, opacity: 1, y: 0 }}
               transition={{ 
                 duration: 1, 
@@ -60,8 +124,6 @@ export default function TarotFan() {
                 type: "spring", stiffness: 50 
               }}
               
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
               onClick={() => alert(`Карта №${index + 1}`)}
             >
               <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/20 bg-[#2a1d17]">
@@ -70,7 +132,7 @@ export default function TarotFan() {
                   alt="Tarot Back"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100px, 150px"
+                  sizes="(max-width: 768px) 60px, (max-width: 1024px) 90px, 120px"
                   priority={index < 10}
                 />
                 <div className="absolute inset-0 bg-black/10 pointer-events-none" />
