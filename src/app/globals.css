@@ -2,28 +2,26 @@
 
 @theme {
   /* --- КОЛЬОРИ --- */
-  /* Tailwind v4 автоматично створить утиліти bg-background, text-primary тощо */
-  
-  --color-background: #FDF8F3;  /* Ніжний бежевий */
-  --color-primary: #8B4513;     /* Теракотовий (SaddleBrown) */
-  --color-secondary: #A0522D;   /* Світліший коричневий */
+  --color-background: #FDF8F3;
+  --color-primary: #8B4513;
+  --color-secondary: #A0522D;
 
   /* --- ШРИФТИ --- */
-  /* Посилаємось на змінні, які ми створили в layout.tsx */
+  /* ТУТ ЗМІНИ: Ми посилаємось на нові змінні з layout.tsx */
   
-  --font-heading: var(--font-playfair), ui-serif, Georgia, serif; 
-  --font-body: var(--font-crimson), ui-serif, Georgia, serif;
+  /* Magneta для заголовків */
+  --font-heading: var(--font-magneta), "Times New Roman", serif; 
+  
+  /* Minion для основного тексту */
+  --font-body: var(--font-minion), "Times New Roman", serif;
 }
 
-/* Базові стилі */
 @layer base {
   body {
-    /* Застосовуємо шрифт за замовчуванням */
     font-family: var(--font-body); 
   }
 }
 
-/* Твої кастомні стилі (якщо треба) */
 @layer utilities {
   .text-balance {
     text-wrap: balance;

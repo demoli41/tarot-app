@@ -55,7 +55,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
               {/* Кнопка закриття (Хрестик) */}
               <button 
                 onClick={onClose}
-                className="absolute top-4 right-4 z-20 p-2 bg-white/50 hover:bg-white rounded-full transition-colors text-primary"
+                className="absolute top-4 right-4 z-20 p-2 bg-white/50 hover:bg-white rounded-full cursor-pointer transition-colors text-primary"
               >
                 <X size={24} />
               </button>
@@ -63,7 +63,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
               {/* ЛІВА ЧАСТИНА - Картинка */}
               {/* На ПК займає 50% ширини і всю висоту, картинка центрується */}
               <div className="w-full md:w-[50%] bg-[#2a1d17] flex justify-center items-center p-8 shrink-0">
-                <div className="relative w-full max-w-[320px] aspect-[2/3] shadow-2xl rounded-lg overflow-hidden border border-white/10">
+                <div className="relative w-full max-w-[320px] aspect-[945/1535] shadow-2xl rounded-lg overflow-hidden">
                   <Image
                     src={card.imageSrc} 
                     alt={card.title}
@@ -90,7 +90,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                 <div className="p-6 md:p-8 py-4 overflow-y-auto flex-grow">
                   <div className="space-y-6 font-body text-lg text-primary/80 leading-relaxed">
                     <div>
-                      <h3 className="font-bold text-secondary text-sm uppercase tracking-widest mb-2">
+                      <h3 className="font-bold font-body text-secondary text-sm uppercase tracking-widest mb-2">
                         Tarot Reflection
                       </h3>
                       <p>{card.tarotReflection}</p>
@@ -99,23 +99,25 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                     <div className="w-full h-px bg-primary/20 my-4" />
 
                     <div>
-                      <h3 className="font-bold text-secondary text-sm uppercase tracking-widest mb-2">
+                      <h3 className="font-bold font-body text-secondary text-sm uppercase tracking-widest mb-2">
                         Wisdom of Birth Support
                       </h3>
                       <p className="italic text-xl">{card.wisdomOfBirthSupport}</p>
                     </div>
                   </div>
-                </div>
 
-                {/* 3. Footer (Фіксований знизу) */}
-                <div className="p-6 md:p-8 pt-4 border-t border-primary/10 bg-[#FDF8F3] z-10">
+              {/* 3. Footer (Фіксований знизу) */}
+                <div className="p-6 md:p-4 pt-4 mt-4 border-t border-primary/10 bg-[#FDF8F3] z-10">
                   <button
                     onClick={onClose}
-                    className="w-full md:w-auto px-8 py-3 bg-primary text-[#FDF8F3] font-heading font-bold rounded hover:bg-secondary transition-colors"
+                    className="w-full md:w-auto px-8 py-3 bg-primary text-[#FDF8F3] font-body cursor-pointer font-bold rounded hover:bg-secondary transition-colors"
                   >
                     Choose another card
                   </button>
                 </div>
+                </div>
+
+          
 
               </div>
 

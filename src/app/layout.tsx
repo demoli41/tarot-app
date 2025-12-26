@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Crimson_Text } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair", 
+// Оновив шляхи до перейменованих файлів
+const magneta = localFont({
+  src: "./fonts/magneta-regular.ttf", 
+  variable: "--font-magneta",         
   display: "swap",
 });
 
-const crimson = Crimson_Text({
-  subsets: ["latin"],
-  variable: "--font-crimson",
-  weight: ["400", "600"],
+const minion = localFont({
+  src: "./fonts/minion-regular.otf",
+  variable: "--font-minion",
   display: "swap",
 });
 
@@ -26,10 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${playfair.variable} ${crimson.variable} antialiased bg-background text-primary`}
-      >
+    <html lang="en" className={`${magneta.variable} ${minion.variable}`}>
+      
+      {/* 2. Стилі залишаємо тут */}
+      <body className="antialiased bg-background text-primary font-body">
         {children}
       </body>
     </html>
