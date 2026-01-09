@@ -30,7 +30,7 @@ export default function Home() {
 
           <p className="font-semibold text-xl pt-6">
             Ask for guidance. Open to receive. <br />
-            Pick a card. Or two.
+            Pick a card.
           </p>
         </div>
 

@@ -48,7 +48,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
               // 1. md:h-[80vh] - на планшетах/ПК фіксуємо висоту (80% екрану)
               // 2. md:overflow-hidden - забороняємо скрол всього контейнера на ПК (скролитиметься тільки текст)
               // 3. overflow-y-auto - на мобільному залишаємо звичайний скрол
-              className="bg-[#FDF8F3] w-full max-w-5xl rounded-xl shadow-2xl flex flex-col md:flex-row relative 
+              className="bg-[#f0ead8] w-full max-w-5xl rounded-xl shadow-2xl flex flex-col md:flex-row relative 
                          max-h-[90vh] md:h-[85vh] overflow-y-auto md:overflow-hidden"
             >
               
@@ -62,10 +62,25 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
 
               {/* ЛІВА ЧАСТИНА - Картинка */}
               {/* На ПК займає 50% ширини і всю висоту, картинка центрується */}
-              <div className="w-full md:w-[50%] bg-[#2a1d17] flex justify-center items-center p-8 shrink-0">
-                <div className="relative w-full max-w-[320px] aspect-[945/1535] shadow-2xl rounded-lg overflow-hidden">
+              {/*<div className="w-full md:w-[50%] bg-[#c7ad78] flex justify-center items-center p-8 shrink-0">
+                {/* Змінюємо shadow-2xl на кастомну тінь.
+                    shadow-[0_25px_50px_-12px_rgba(66,49,22,0.7)] - це велика, м'яка, темно-коричнева тінь.
+                
+                <div className="relative w-full max-w-[320px] aspect-[945/1535] shadow-[0_35px_60px_-15px_rgba(66,49,22,0.8)] rounded-2xl overflow-hidden border-2 border-white/40">
                   <Image
-                    src={card.imageSrc} 
+                    src={card.imageSrc}
+                    alt={card.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              */}
+
+              <div className="w-full md:w-[50%] bg-[#c7ad78] flex justify-center items-center p-8 shrink-0">
+                <div className="relative w-full max-w-[320px] aspect-[945/1535] rounded-2xl overflow-hidden">
+                  <Image
+                    src={card.imageSrc}
                     alt={card.title}
                     fill
                     className="object-cover"
@@ -78,8 +93,8 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
               <div className="w-full md:w-[60%] flex flex-col h-full relative">
                 
                 {/* 1. Header (Фіксований зверху) */}
-                <div className="p-6 md:p-8 pb-2 md:pb-4 border-b border-primary/10 bg-[#FDF8F3] z-10">
-                   <h2 className="font-heading text-3xl md:text-4xl text-primary font-bold pr-10">
+                <div className="p-6 md:p-8 pb-2 md:pb-4 border-b border-primary/10 bg-[#f0ead8] z-10">
+                   <h2 className="font-heading text-3xl md:text-4xl text-secondary font-bold pr-10">
                     {card.title}
                   </h2>
                 </div>
@@ -90,16 +105,16 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                 <div className="p-6 md:p-8 py-4 overflow-y-auto flex-grow">
                   <div className="space-y-6 font-body text-lg text-primary/80 leading-relaxed">
                     <div>
-                      <h3 className="font-bold font-body text-secondary text-sm uppercase tracking-widest mb-2">
+                      <h3 className="font-extrabold font-body text-secondary text-sm uppercase tracking-widest mb-2">
                         Tarot Reflection
                       </h3>
-                      <p>{card.tarotReflection}</p>
+                      <p className="">{card.tarotReflection}</p>
                     </div>
 
                     <div className="w-full h-px bg-primary/20 my-4" />
 
                     <div>
-                      <h3 className="font-bold font-body text-secondary text-sm uppercase tracking-widest mb-2">
+                      <h3 className="font-extrabold font-body text-secondary text-sm uppercase tracking-widest mb-2">
                         Wisdom of Birth Support
                       </h3>
                       <p className="italic text-xl">{card.wisdomOfBirthSupport}</p>
@@ -107,10 +122,10 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                   </div>
 
               {/* 3. Footer (Фіксований знизу) */}
-                <div className="p-6 md:p-4 pt-4 mt-4 border-t border-primary/10 bg-[#FDF8F3] z-10">
+                <div className="p-6 md:p-4 pt-4 mt-4 border-t border-primary/10 bg-[#f0ead8] z-10">
                   <button
                     onClick={onClose}
-                    className="w-full md:w-auto px-8 py-3 bg-primary text-[#FDF8F3] font-body cursor-pointer font-bold rounded hover:bg-secondary transition-colors"
+                    className="w-full md:w-auto px-8 py-3 bg-primary text-[#f0ead8] font-body cursor-pointer font-bold rounded hover:bg-secondary transition-colors"
                   >
                     Choose another card
                   </button>

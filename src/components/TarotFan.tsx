@@ -12,17 +12,21 @@ import { TarotCard } from "@/types";
 import CardModal from "./Card.Modal";
 
 
-// --- КОНФІГУРАЦІЇ ---
 const DESKTOP_CONFIG = {
-  cardWidth: 105, cardHeight: 180, radius: 380, arcAngle: 150,
+  // 180 * 0.6156 = ~111
+  cardWidth: 111, cardHeight: 180, radius: 380, arcAngle: 150,
   displayCount: 22, yOffset: 0, containerHeight: "h-[300px]", marginTop: "mt-8 mb-16",
 };
+
 const TABLET_CONFIG = {
-  cardWidth: 80, cardHeight: 135, radius: 280, arcAngle: 145,
+  // 135 * 0.6156 = ~83
+  cardWidth: 83, cardHeight: 135, radius: 280, arcAngle: 145,
   displayCount: 22, yOffset: 10, containerHeight: "h-[240px]", marginTop: "mt-6 mb-12",
 };
+
 const MOBILE_CONFIG = {
-  cardWidth: 55, cardHeight: 90, radius: 180, arcAngle: 140,
+  // 90 * 0.6156 = ~55.4 (округлимо до 56 та 91 для чіткості)
+  cardWidth: 56, cardHeight: 91, radius: 180, arcAngle: 140,
   displayCount: 20, yOffset: 20, containerHeight: "h-[180px]", marginTop: "mt-4 mb-8",
 };
 
@@ -106,7 +110,7 @@ export default function TarotFan() {
               >
                 <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/20 bg-[#2a1d17]">
                    <Image
-                    src="/images/tarot_card.png"
+                    src="/images/RearCardSide.png"
                     alt="Tarot Back"
                     fill
                     className="object-cover"
