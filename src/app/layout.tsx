@@ -4,8 +4,14 @@ import "./globals.css";
 
 // Оновив шляхи до перейменованих файлів
 const magneta = localFont({
-  src: "./fonts/magneta-regular.ttf", 
+  src: "./fonts/magneta-mediumitalic.ttf", 
   variable: "--font-magneta",         
+  display: "swap",
+});
+
+const magneta_medium = localFont({
+  src: "./fonts/magneta-medium.ttf", 
+  variable: "--font-magneta-medium",         
   display: "swap",
 });
 
@@ -26,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${magneta.variable} ${minion.variable}`}>
+    <html lang="en" className={`${magneta.variable} ${minion.variable} ${magneta_medium.variable}`}>
       
       {/* 2. Стилі залишаємо тут */}
       <body className="antialiased bg-background text-primary font-body">

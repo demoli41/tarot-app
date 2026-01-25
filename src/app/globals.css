@@ -4,13 +4,16 @@
   /* --- КОЛЬОРИ --- */
   --color-background: #f0ead8;
   --color-primary: #282829;
-  --color-secondary: #041e41;
+  --color-secondary: #282829;
+  /*--color-secondary: #041e41;*/
 
   /* --- ШРИФТИ --- */
   /* ТУТ ЗМІНИ: Ми посилаємось на нові змінні з layout.tsx */
   
   /* Magneta для заголовків */
   --font-heading: var(--font-magneta), "Times New Roman", serif; 
+
+  --font-heading-medium: var(--font-magneta-medium), "Times New Roman", serif;
   
   /* Minion для основного тексту */
   --font-body: var(--font-minion), "Times New Roman", serif;

@@ -13,7 +13,7 @@ export default function Home() {
         {/* z-20 щоб текст був поверх карток, якщо вони сильно піднімуться */}
         <div className="space-y-6 font-body text-lg md:text-xl leading-relaxed text-primary/90 mt-8 relative z-20">
           <p>
-            <span className="font-bold block mb-2">Pause.</span> 
+            <span className="font-heading block mb-6 md:mb-2">Pause.</span> 
             Take this moment to sit with yourself. To be present with the wisdom 
             of your own heart, body, mind, and spirit, in this pregnant moment.
           </p>
@@ -23,12 +23,12 @@ export default function Home() {
             actual child or another act of creation. Even another version of yourself.
           </p>
           
-          <p className="italic">
+          <p className="">
             Inquire, reflect, seek insight. Open yourself to a new awareness, 
             a new clarity, a new understanding, a message.
           </p>
 
-          <p className="font-semibold text-xl pt-6">
+          <p className=" text-xl pt-10 md:pt-6 ">
             Ask for guidance. Open to receive. <br />
             Pick a card.
           </p>

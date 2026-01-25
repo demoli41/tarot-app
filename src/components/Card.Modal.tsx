@@ -93,8 +93,8 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
               <div className="w-full md:w-[60%] flex flex-col h-full relative">
                 
                 {/* 1. Header (Фіксований зверху) */}
-                <div className="p-6 md:p-8 pb-2 md:pb-4 border-b border-primary/10 bg-[#f0ead8] z-10">
-                   <h2 className="font-heading text-3xl md:text-4xl text-secondary font-bold pr-10">
+                <div className="p-8 md:p-8 pb-6 md:pb-4 border-b border-primary/10 bg-[#f0ead8] z-10">
+                   <h2 className="font-heading text-3xl md:text-4xl text-secondary italic text-center ">
                     {card.title}
                   </h2>
                 </div>
@@ -102,19 +102,19 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                 {/* 2. Scrollable Content (Скролиться тільки ця частина) */}
                 {/* flex-grow - займає все вільне місце */}
                 {/* overflow-y-auto - вмикає скрол, якщо текст не влазить */}
-                <div className="p-6 md:p-8 py-4 overflow-y-auto flex-grow">
-                  <div className="space-y-6 font-body text-lg text-primary/80 leading-relaxed">
+                <div className="p-6 md:p-8 py-6 md:py-4 overflow-y-auto flex-grow">
+                  <div className="space-y-8 md:space-y-6 font-body text-lg text-primary/80 leading-relaxed">
                     <div>
-                      <h3 className="font-extrabold font-body text-secondary text-sm uppercase tracking-widest mb-2">
+                      <h3 className="font-body text-secondary text-sm uppercase tracking-widest mb-2">
                         Tarot Reflection
                       </h3>
-                      <p className="">{card.tarotReflection}</p>
+                      <p className="font-body">{card.tarotReflection}</p>
                     </div>
 
-                    <div className="w-full h-px bg-primary/20 my-4" />
+                    <div className="w-full h-px bg-primary/20 my-6 md:my-4" />
 
                     <div>
-                      <h3 className="font-extrabold font-body text-secondary text-sm uppercase tracking-widest mb-2">
+                      <h3 className="font-body text-secondary text-sm uppercase tracking-widest mb-2">
                         Wisdom of Birth Support
                       </h3>
                       <p className="italic text-xl">{card.wisdomOfBirthSupport}</p>
@@ -122,10 +122,10 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                   </div>
 
               {/* 3. Footer (Фіксований знизу) */}
-                <div className="p-6 md:p-4 pt-4 mt-4 border-t border-primary/10 bg-[#f0ead8] z-10">
+                <div className="p-6 md:p-4 pt-4 my-6 md:mt-4 border-t border-primary/10 bg-[#f0ead8] z-10">
                   <button
                     onClick={onClose}
-                    className="w-full md:w-auto px-8 py-3 bg-primary text-[#f0ead8] font-body cursor-pointer font-bold rounded hover:bg-secondary transition-colors"
+                    className="w-full md:w-auto mt-3 md:mt-0 px-8 py-3 bg-primary text-[#f0ead8] font-body cursor-pointerd rounded hover:bg-secondary transition-colors"
                   >
                     Choose another card
                   </button>
