@@ -94,7 +94,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                 
                 {/* 1. Header (Фіксований зверху) */}
                 <div className="p-8 md:p-8 pb-6 md:pb-4 border-b border-primary/10 bg-[#f0ead8] z-10">
-                   <h2 className="font-heading text-3xl md:text-4xl text-secondary italic text-center ">
+                   <h2 className="font-heading-medium text-3xl md:text-4xl text-secondary text-center ">
                     {card.title}
                   </h2>
                 </div>

@@ -11,25 +11,25 @@ export default function Home() {
         
         {/* --- ТЕКСТОВИЙ БЛОК --- */}
         {/* z-20 щоб текст був поверх карток, якщо вони сильно піднімуться */}
-        <div className="space-y-6 font-body text-lg md:text-xl leading-relaxed text-primary/90 mt-8 relative z-20">
+        <div className="space-y-6 text-balance font-body text-lg md:text-xl leading-relaxed text-primary/90 mt-8 relative z-20">
           <p>
-            <span className="font-heading block mb-6 md:mb-2">Pause.</span> 
-            Take this moment to sit with yourself. To be present with the wisdom 
+            <span className="font-heading block mb-6 md:mb-6">Pause.</span> 
+            Take this moment to sit with yourself. To be present with the wisdom<br /> 
             of your own heart, body, mind, and spirit, in this pregnant moment.
           </p>
           
           <p>
             Connect with whatever you are gestating and birthing, be that an 
-            actual child or another act of creation. Even another version of yourself.
+            actual<br /> child or another act of creation. Even another version of yourself.
           </p>
           
           <p className="">
-            Inquire, reflect, seek insight. Open yourself to a new awareness, 
-            a new clarity, a new understanding, a message.
+            Inquire, reflect, seek insight.<br /> Open yourself to a new awareness, 
+            a new clarity,<br /> a new understanding, a message.
           </p>
 
-          <p className=" text-xl pt-10 md:pt-6 ">
-            Ask for guidance. Open to receive. <br />
+          <p className="">
+            Ask for guidance. Open to receive.
             Pick a card.
           </p>
         </div>
@@ -39,7 +39,7 @@ export default function Home() {
             -mt-24 (mobile) та -mt-36 (desktop): "Підтягуємо" віяло вгору, перекриваючи пусте місце.
             pb-12: Додаємо місце знизу, щоб футер не перекривав карти.
         */}
-        <div className="w-full -mt-8 md:-mt-6 pb-12">
+        <div className="w-full -mt-6 md:-mt-10 pb-16">
           <TarotFan />
         </div>
 
