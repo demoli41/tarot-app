@@ -111,7 +111,7 @@ export default function TarotFan() {
               >
                 <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/20 bg-[#2a1d17]">
                    <Image
-                    src="/images/RearCardSide.png"
+                    src="/images/RearCardSide.webp"
                     alt="Tarot Back"
                     fill
                     className="object-cover"
