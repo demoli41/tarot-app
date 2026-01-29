@@ -2,27 +2,23 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 import { tarotDeck } from "@/data/card"; 
 import { TarotCard } from "@/types"; 
 import CardModal from "./Card.Modal";
 
-
 const DESKTOP_CONFIG = {
-  // 180 * 0.6156 = ~111
   cardWidth: 111, cardHeight: 180, radius: 380, arcAngle: 150,
   displayCount: 22, yOffset: 0, containerHeight: "h-[300px]", marginTop: "mt-8 mb-16",
 };
 
 const TABLET_CONFIG = {
-  // 135 * 0.6156 = ~83
   cardWidth: 83, cardHeight: 135, radius: 280, arcAngle: 145,
   displayCount: 22, yOffset: 10, containerHeight: "h-[240px]", marginTop: "mt-6 mb-12",
 };
 
 const MOBILE_CONFIG = {
-  // 90 * 0.6156 = ~55.4 
   cardWidth: 56, cardHeight: 91, radius: 180, arcAngle: 140,
   displayCount: 20, yOffset: 20, containerHeight: "h-[180px]", marginTop: "mt-4 mb-8",
 };
@@ -35,8 +31,16 @@ export default function TarotFan() {
   const [selectedCard, setSelectedCard] = useState<TarotCard | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [fanCards, setFanCards] = useState<TarotCard[]>([]);
+
+  const [preloadCard, setPreloadCard] = useState<TarotCard | null>(null);
+
   useEffect(() => {
     setMounted(true);
+
+    const shuffled = [...tarotDeck].sort(() => 0.5 - Math.random());
+    setFanCards(shuffled.slice(0, 25));
+
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 768) setDeviceType('mobile');
@@ -49,20 +53,17 @@ export default function TarotFan() {
   }, []);
 
   const config = deviceType === 'mobile' ? MOBILE_CONFIG : deviceType === 'tablet' ? TABLET_CONFIG : DESKTOP_CONFIG;
-  const cards = Array.from({ length: config.displayCount }, (_, i) => i);
+  const displayIndices = Array.from({ length: config.displayCount }, (_, i) => i);
   const startAngle = -config.arcAngle / 2;
   const angleStep = config.arcAngle / (config.displayCount - 1);
 
-  const handleCardClick = () => {
-    if (tarotDeck.length === 0) {
-        console.error("Колода пуста!");
-        return;
-    }
-    const randomIndex = Math.floor(Math.random() * tarotDeck.length);
-    const randomCard = tarotDeck[randomIndex];
-    
-    setSelectedCard(randomCard);
+  const handleCardClick = (card: TarotCard) => {
+    setSelectedCard(card);
     setIsModalOpen(true);
+  };
+
+  const handleMouseEnter = (card: TarotCard) => {
+    setPreloadCard(card);
   };
 
   if (!mounted) return <div className="h-[250px] w-full" />;
@@ -74,12 +75,16 @@ export default function TarotFan() {
         ${config.containerHeight} ${config.marginTop}`}
       >
         <div className="relative w-1 h-1"> 
-          {cards.map((index) => {
+          {displayIndices.map((index) => {
             const rotate = startAngle + index * angleStep;
-            
+
+            const cardData = fanCards[index];
+
+            if (!cardData) return null;
+
             return (
               <motion.div
-                key={index}
+                key={cardData.id || index} 
                 className="absolute cursor-pointer shadow-xl rounded-lg"
                 style={{
                   width: `${config.cardWidth}px`,
@@ -100,7 +105,9 @@ export default function TarotFan() {
                 transition={{ 
                   duration: 1, delay: index * 0.015, type: "spring", stiffness: 50 
                 }}
-                onClick={handleCardClick}
+
+                onMouseEnter={() => handleMouseEnter(cardData)}
+                onClick={() => handleCardClick(cardData)}
               >
                 <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/20 bg-[#2a1d17]">
                    <Image
@@ -120,7 +127,18 @@ export default function TarotFan() {
         </div>
       </div>
 
-      {/* Модальне вікно */}
+      <div className="fixed bottom-0 right-0 w-0 h-0 overflow-hidden opacity-0 pointer-events-none">
+        {preloadCard && (
+          <Image
+            src={preloadCard.imageSrc}
+            alt="preload"
+            width={320} 
+            height={500}
+            priority={true} 
+          />
+        )}
+      </div>
+
       <CardModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 

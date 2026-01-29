@@ -63,6 +63,8 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                     className="object-cover"
                     priority 
                     sizes="(max-width: 768px) 100vw, 320px"
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
                   />
                 </div>
               </div>
