@@ -43,10 +43,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              
-              // === ВИПРАВЛЕННЯ ТУТ ===
-              // 1. overflow-y-auto: На мобільних дозволяємо скрол всього вікна.
-              // 2. md:overflow-hidden: На ПК забороняємо загальний скрол (щоб скролився лише текст).
+
               className="bg-[#f0ead8] w-full max-w-5xl rounded-xl shadow-2xl flex flex-col md:flex-row relative 
                          max-h-[90vh] md:h-[85vh] overflow-y-auto md:overflow-hidden"
             >
@@ -57,8 +54,6 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                 <X size={24} />
               </button>
 
-              {/* ЛІВА ЧАСТИНА - Картинка */}
-              {/* shrink-0 важливий, щоб картинку не сплющувало */}
               <div className="w-full md:w-[50%] bg-[#c7ad78] flex justify-center items-center p-8 shrink-0">
                 <div className="relative w-full max-w-[320px] aspect-[945/1535] rounded-2xl overflow-hidden shadow-lg">
                   <Image
@@ -71,15 +66,8 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
               </div>
 
               {/* ПРАВА ЧАСТИНА - Контент */}
-              {/* === ВИПРАВЛЕННЯ ТУТ === */}
-              {/* 1. h-auto md:h-full: На мобільному висота "скільки треба", на ПК - на всю висоту контейнера. */}
-              {/* 2. md:justify-center: Центрування по вертикалі працює ТІЛЬКИ на ПК. */}
               <div className="w-full md:w-[60%] h-auto md:h-full relative flex flex-col md:justify-center items-center bg-[#f0ead8]">
-                
-                {/* Внутрішній контейнер */}
-                {/* === ВИПРАВЛЕННЯ ТУТ === */}
-                {/* 1. md:max-h-full: Обмеження висоти тільки для ПК. */}
-                {/* 2. md:overflow-y-auto: Скрол всередині тільки для ПК. На мобільному скролиться батьківський div. */}
+
                 <div className="w-full md:max-h-full md:overflow-y-auto flex flex-col">
                   
                   {/* Header */}

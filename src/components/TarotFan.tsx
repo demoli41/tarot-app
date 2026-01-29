@@ -4,9 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-// 1. ВАШІ ІМПОРТИ
-// Якщо ваш файл називається card.ts (без s), то шлях правильний.
-// Якщо cards.ts - змініть на "@/data/cards"
 import { tarotDeck } from "@/data/card"; 
 import { TarotCard } from "@/types"; 
 import CardModal from "./Card.Modal";
@@ -25,7 +22,7 @@ const TABLET_CONFIG = {
 };
 
 const MOBILE_CONFIG = {
-  // 90 * 0.6156 = ~55.4 (округлимо до 56 та 91 для чіткості)
+  // 90 * 0.6156 = ~55.4 
   cardWidth: 56, cardHeight: 91, radius: 180, arcAngle: 140,
   displayCount: 20, yOffset: 20, containerHeight: "h-[180px]", marginTop: "mt-4 mb-8",
 };
@@ -35,8 +32,6 @@ type DeviceType = 'mobile' | 'tablet' | 'desktop';
 export default function TarotFan() {
   const [mounted, setMounted] = useState(false);
   const [deviceType, setDeviceType] = useState<DeviceType>('desktop');
-  
-  // 2. State використовує ваш тип TarotCard
   const [selectedCard, setSelectedCard] = useState<TarotCard | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -58,7 +53,6 @@ export default function TarotFan() {
   const startAngle = -config.arcAngle / 2;
   const angleStep = config.arcAngle / (config.displayCount - 1);
 
-  // 3. Логіка вибору карти з вашої колоди
   const handleCardClick = () => {
     if (tarotDeck.length === 0) {
         console.error("Колода пуста!");
