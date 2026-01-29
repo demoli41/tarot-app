@@ -61,6 +61,8 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                     alt={card.title}
                     fill
                     className="object-cover"
+                    priority 
+                    sizes="(max-width: 768px) 100vw, 320px"
                   />
                 </div>
               </div>
