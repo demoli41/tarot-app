@@ -100,6 +100,11 @@ export default function TarotFan() {
                   scale: 1.05, 
                   transition: { type: "spring", stiffness: 400, damping: 40 },
                 }}
+                whileTap={{
+                  y: deviceType === 'mobile' ? -25 : -15, 
+                  scale: 1.05, 
+                  transition: { type: "spring", stiffness: 400, damping: 40 },
+                }}
                 initial={{ rotate: 0, opacity: 0, y: config.radius }} 
                 animate={{ rotate: rotate, opacity: 1, y: 0 }}
                 transition={{ 

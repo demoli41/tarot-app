@@ -17,24 +17,25 @@ export default function Home() {
           <div className="space-y-6 text-balance font-body text-lg md:text-xl leading-relaxed text-primary/90 mt-8 relative z-20">
             <p>
               <span className="font-heading block mb-6 md:mb-6">Pause.</span> 
-              Take this moment to sit with yourself. To be present with the wisdom
-              <br className="hidden md:inline" /> 
-              of your own heart, body, mind, and spirit, in this pregnant moment.
+              Take a moment to be with yourself.
+              <br className="hidden md:inline" /> Be present with the wisdom of your own heart, body, mind, and
+              <br className="hidden md:inline" /> spirit, in this pregnant moment.
             </p>
             
             <p>
-              Connect with whatever you are gestating and birthing, be that an actual
-              <br className="hidden md:inline" /> child or another act of creation. Even another version of yourself.
+              Connect with whatever you are gestating and birthing, whether that 
+              <br className="hidden md:inline" /> is a child, a creative offering, or even a new version of yourself.
             </p>
             
             <p>
-              Inquire, reflect, seek insight.
-              <br className="hidden md:inline" /> Open yourself to a new awareness, a new clarity,
-              <br className="hidden md:inline" /> a new understanding, a message.
+              Inquire. Reflect. Seek insight.
+              <br className="hidden md:inline" /> Open yourself to new awareness, fresh clarity, deeper
+              <br className="hidden md:inline" /> understanding, and the message that is waiting for you.
             </p>
 
             <p>
-              Ask for guidance. Open to receive.
+              Ask for guidance.
+              Open to receive.
               Pick a card.
             </p>
           </div>

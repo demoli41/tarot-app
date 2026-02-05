@@ -72,15 +72,15 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                 <div className="w-full md:max-h-full md:overflow-y-auto flex flex-col">
                   
                   {/* Header */}
-                  <div className="p-8 md:p-8 pb-4 md:pb-4 text-center">
+                  <div className="p-8 md:p-8 pb-2 md:pb-4 text-center">
                     <h2 className="font-heading-medium text-3xl md:text-4xl text-secondary">
                       {card.title}
                     </h2>
                   </div>
 
                   {/* Text Content */}
-                  <div className="px-6 md:px-12 py-2">
-                    <div className="space-y-8 md:space-y-6 font-body text-lg text-primary/80 leading-relaxed">
+                  <div className="px-6 md:px-12">
+                    <div className="space-y-6 md:space-y-6 font-body text-lg text-primary/80 leading-relaxed">
 
                       <div className="w-full h-px bg-primary/20 my-6 md:my-4" />
 
@@ -97,7 +97,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                         <h3 className="font-body text-secondary text-sm uppercase tracking-widest mb-2 text-center">
                           Wisdom of Birth Support
                         </h3>
-                        <p className="italic text-xl text-center">{card.wisdomOfBirthSupport}</p>
+                        <p className="italic text-center">{card.wisdomOfBirthSupport}</p>
                       </div>
                     </div>
                   </div>
