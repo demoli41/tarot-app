@@ -14,7 +14,7 @@ export default function Home() {
         <main className="grow flex flex-col items-center w-full px-4 max-w-4xl text-center relative z-10">
           
           {/* --- ТЕКСТОВИЙ БЛОК --- */}
-          <div className="space-y-6 text-balance font-body text-lg md:text-xl leading-relaxed text-primary/90 mt-8 relative z-20">
+          <div className="space-y-6 text-balance font-body text-lg md:text-xl leading-relaxed text-primary/90 relative z-20">
             <p>
               <span className="font-heading block mb-6 md:mb-6">Pause.</span> 
               Take a moment to be with yourself.
