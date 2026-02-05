@@ -55,7 +55,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
               </button>
 
               <div className="w-full md:w-[50%] bg-[#c7ad78] flex justify-center items-center p-8 shrink-0">
-                <div className="relative w-full max-w-[320px] aspect-[945/1535] rounded-2xl overflow-hidden shadow-lg">
+                <div className="relative w-full max-w-[320px] aspect-[945/1535] rounded-2xl overflow-hidden">
                   <Image
                     src={card.imageSrc}
                     alt={card.title}
@@ -72,7 +72,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                 <div className="w-full md:max-h-full md:overflow-y-auto flex flex-col">
                   
                   {/* Header */}
-                  <div className="p-8 md:p-8 pb-2 md:pb-4 text-center">
+                  <div className="p-8 md:p-8 pb-8 md:pb-8 text-center">
                     <h2 className="font-heading-medium text-3xl md:text-4xl text-secondary">
                       {card.title}
                     </h2>
@@ -82,13 +82,13 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                   <div className="px-6 md:px-12">
                     <div className="space-y-6 md:space-y-6 font-body text-lg text-primary/80 leading-relaxed">
 
-                      <div className="w-full h-px bg-primary/20 my-6 md:my-4" />
+                      <div className="w-full h-px bg-primary/20 mb-6 md:mb-4" />
 
                       <div>
                         <h3 className="font-body text-secondary text-sm uppercase tracking-widest mb-2 text-center">
                           Tarot Reflection
                         </h3>
-                        <p className="font-body text-centert">{card.tarotReflection}</p>
+                        <p className="font-body text-left md:text-center">{card.tarotReflection}</p>
                       </div>
 
                       <div className="w-full h-px bg-primary/20 my-6 md:my-4" />
@@ -97,7 +97,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                         <h3 className="font-body text-secondary text-sm uppercase tracking-widest mb-2 text-center">
                           Wisdom of Birth Support
                         </h3>
-                        <p className="italic text-center">{card.wisdomOfBirthSupport}</p>
+                        <p className="font-body text-left md:text-center">{card.wisdomOfBirthSupport}</p>
                       </div>
                     </div>
                   </div>
@@ -106,7 +106,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                   <div className="p-6 md:p-8 pt-6 flex justify-center ">
                     <button
                       onClick={onClose}
-                      className="w-full md:w-auto px-8 py-3 bg-primary text-[#f0ead8] font-body cursor-pointer rounded hover:bg-secondary transition-colors"
+                      className="w-full text-xl md:w-auto px-8 py-3 bg-primary text-[#f0ead8] font-body cursor-pointer rounded hover:bg-secondary transition-colors"
                     >
                       Choose another card
                     </button>
