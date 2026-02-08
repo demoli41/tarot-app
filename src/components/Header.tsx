@@ -2,7 +2,7 @@ export default function Header() {
   return (
     <header className="w-full py-14 px-4 flex justify-center items-center">
       <div className="font-heading text-[#414141] flex flex-col items-center">
-        <h1 className="font-heading-medium text-[20px] tracking-widest leading-tight uppercase text-center ml-[0.1em]">
+        <h1 className="font-heading-medium text-[20px] tracking-widest leading-tight uppercase text-center ml-[0.7em]">
           WISDOM OF BIRTH
         </h1>
 

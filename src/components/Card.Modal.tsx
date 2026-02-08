@@ -54,8 +54,8 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                 <X size={24} />
               </button>
 
-              <div className="w-full md:w-[50%] bg-[#c7ad78] flex justify-center items-center p-8 shrink-0">
-                <div className="relative w-full max-w-[320px] aspect-[945/1535] rounded-2xl overflow-hidden">
+              <div className="w-full md:w-[50%] bg-[#c7ad78] flex justify-center items-center px-8 pt-8 shrink-0">
+                <div className="relative w-full max-w-[320px] aspect-[945/1505] rounded-2xl overflow-hidden">
                   <Image
                     src={card.imageSrc}
                     alt={card.title}
@@ -72,7 +72,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                 <div className="w-full md:max-h-full md:overflow-y-auto flex flex-col">
                   
                   {/* Header */}
-                  <div className="p-8 md:p-8 pb-8 md:pb-8 text-center">
+                  <div className="px-8 pt-8 md:p-8 pb-8 md:pb-8 text-center">
                     <h2 className="font-heading-medium text-3xl md:text-4xl text-secondary">
                       {card.title}
                     </h2>
