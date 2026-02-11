@@ -106,7 +106,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                   <div className="p-6 md:p-8 pt-6 flex justify-center ">
                     <button
                       onClick={onClose}
-                      className="w-full text-xl md:w-auto px-8 py-3 bg-primary text-[#f0ead8] font-body cursor-pointer rounded hover:bg-secondary transition-colors"
+                      className="w-full font-heading-medium text-2xl md:w-auto px-8 py-3 bg-primary text-[#f0ead8]  cursor-pointer rounded hover:bg-secondary transition-colors"
                     >
                       Choose another card
                     </button>
