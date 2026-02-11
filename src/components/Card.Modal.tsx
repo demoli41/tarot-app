@@ -54,8 +54,8 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                 <X size={24} />
               </button>
 
-              <div className="w-full md:w-[50%] bg-[#c7ad78] flex justify-center items-center px-8 pt-8 shrink-0">
-                <div className="relative w-full max-w-[320px] aspect-[945/1505] rounded-2xl overflow-hidden">
+              <div className="w-full md:w-[50%] bg-[#c7ad78] flex justify-center items-center px-8 py-9 shrink-0">
+                <div className="relative w-full max-w-[320px] aspect-[945/1535] rounded-2xl overflow-hidden">
                   <Image
                     src={card.imageSrc}
                     alt={card.title}
@@ -93,11 +93,11 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
 
                       <div className="w-full h-px bg-primary/20 my-6 md:my-4" />
 
-                      <div>
-                        <h3 className="font-body text-secondary text-sm uppercase tracking-widest mb-2 text-center">
+                      <div className="italic">
+                        <h3 className="font-body text-secondary text-sm uppercase tracking-widest mb-2 italic text-left">
                           Wisdom of Birth Support
                         </h3>
-                        <p className="font-body text-left md:text-center">{card.wisdomOfBirthSupport}</p>
+                        <p className="font-body text-left">{card.wisdomOfBirthSupport}</p>
                       </div>
                     </div>
                   </div>
