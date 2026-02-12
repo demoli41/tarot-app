@@ -93,11 +93,11 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
 
                       <div className="w-full h-px bg-primary/20 my-6 md:my-4" />
 
-                      <div className="italic">
-                        <h3 className="font-body text-secondary text-sm uppercase tracking-widest mb-2 italic text-left">
+                      <div className="">
+                        <h3 className="font-body text-secondary text-sm uppercase tracking-widest mb-2 text-center">
                           Wisdom of Birth Support
                         </h3>
-                        <p className="font-body text-left">{card.wisdomOfBirthSupport}</p>
+                        <p className="font-body text-left md:text-center">{card.wisdomOfBirthSupport}</p>
                       </div>
                     </div>
                   </div>
@@ -106,7 +106,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                   <div className="p-6 md:p-8 pt-6 flex justify-center ">
                     <button
                       onClick={onClose}
-                      className="w-full font-heading-medium text-2xl md:w-auto px-8 py-3 bg-primary text-[#f0ead8]  cursor-pointer rounded hover:bg-secondary transition-colors"
+                      className="w-full font-heading-medium text-lg md:w-auto px-8 py-3 bg-primary text-[#f0ead8]  cursor-pointer rounded hover:bg-secondary transition-colors"
                     >
                       Choose another card
                     </button>
