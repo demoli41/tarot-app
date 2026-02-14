@@ -36,7 +36,7 @@ export default function Home() {
             <p>
               Ask for guidance.
               Open to receive.
-              Pick a card.
+              <p className="italic"> Pick a card.</p>
             </p>
           </div>
 
