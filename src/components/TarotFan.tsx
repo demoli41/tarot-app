@@ -19,7 +19,6 @@ export default function TarotFan() {
   const [deviceType, setDeviceType] = useState<DeviceType>('desktop');
   const [selectedCard, setSelectedCard] = useState<TarotCard | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); 
   const [fanCards, setFanCards] = useState<TarotCard[]>([]);
   const [preloadCard, setPreloadCard] = useState<TarotCard | null>(null);
   const [clickedCardId, setClickedCardId] = useState<string | number | null>(null);
@@ -46,17 +45,10 @@ export default function TarotFan() {
   const angleStep = config.arcAngle / (config.displayCount - 1);
 
   const handleCardClick = (card: TarotCard) => {
-    if (isLoading) return;
-
     setClickedCardId(card.id); 
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setSelectedCard(card);
-      setIsLoading(false);
-      setIsModalOpen(true);
-      setClickedCardId(null); 
-    }, 1000);
+    setSelectedCard(card);
+    setIsModalOpen(true);
+    setTimeout(() => setClickedCardId(null), 500);
   };
 
   const handleMouseEnter = (card: TarotCard) => {
@@ -71,19 +63,6 @@ export default function TarotFan() {
         className={`relative w-full flex justify-center items-end overflow-visible z-10 transition-all duration-500
         ${config.containerHeight} ${config.marginTop}`}
       >
-        <AnimatePresence>
-          {isLoading && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 z-50 flex flex-col items-center justify-center"
-            >
-              <div className="w-12 h-12 border-6 border-[#ffffff] border-t-transparent rounded-full animate-spin mb-4" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         <div className="relative w-1 h-1"> 
           {displayIndices.map((index) => {
             const rotate = startAngle + index * angleStep;
@@ -95,7 +74,7 @@ export default function TarotFan() {
             return (
               <motion.div
                 key={cardData.id || index} 
-                className={`absolute cursor-pointer shadow-xl rounded-lg ${isLoading ? 'pointer-events-none' : ''}`}
+                className="absolute cursor-pointer shadow-xl rounded-lg"
                 style={{
                   width: `${config.cardWidth}px`,
                   height: `${config.cardHeight}px`,
@@ -106,21 +85,19 @@ export default function TarotFan() {
                   zIndex: index, 
                 }}
                 animate={{ 
-                rotate: rotate, 
-                opacity: 1, 
-                y: isTargeted ? (deviceType === 'mobile' ? -25 : -15) : 0, 
-                scale: isTargeted ? 1.05 : 1 
-              }}
-                whileHover={!isLoading ? {
+                  rotate: rotate, 
+                  opacity: 1, 
+                  y: isTargeted ? (deviceType === 'mobile' ? -25 : -15) : 0, 
+                  scale: isTargeted ? 1.05 : 1 
+                }}
+                whileHover={{
                   y: deviceType === 'mobile' ? -5 : -15, 
                   scale: 1.05, 
                   transition: { type: "spring", stiffness: 400, damping: 40 },
-                } : {}}
-
+                }}
                 onClick={() => handleCardClick(cardData)}
                 onMouseEnter={() => handleMouseEnter(cardData)}
                 initial={{ rotate: 0, opacity: 0, y: config.radius }} 
-
                 transition={{ duration: 1, delay: index * 0.015, type: "spring", stiffness: 50 }}
               >
                 <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/20 bg-[#2a1d17]">

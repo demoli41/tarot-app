@@ -44,7 +44,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
 
-              className="bg-[#f0ead8] w-full max-w-5xl rounded-xl shadow-2xl flex flex-col md:flex-row relative 
+              className="bg-[#EAEBD8] w-full max-w-5xl rounded-xl shadow-2xl flex flex-col md:flex-row relative 
                          max-h-[90vh] md:h-[85vh] overflow-y-auto md:overflow-hidden"
             >
               <button
@@ -67,7 +67,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
               </div>
 
               {/* ПРАВА ЧАСТИНА - Контент */}
-              <div className="w-full md:w-[60%] h-auto md:h-full relative flex flex-col md:justify-center items-center bg-[#f0ead8]">
+              <div className="w-full md:w-[60%] h-auto md:h-full relative flex flex-col md:justify-center items-center bg-[#EAEBD8]">
 
                 <div className="w-full md:max-h-full md:overflow-y-auto flex flex-col">
                   
@@ -106,7 +106,7 @@ export default function CardModal({ isOpen, onClose, card }: CardModalProps) {
                   <div className="p-6 md:p-8 pt-6 flex justify-center ">
                     <button
                       onClick={onClose}
-                      className="w-full font-heading-medium text-lg md:w-auto px-8 py-3 bg-primary text-[#f0ead8]  cursor-pointer rounded hover:bg-secondary transition-colors"
+                      className="w-full font-heading-medium text-lg md:w-auto px-8 py-3 bg-primary text-[#EAEBD8]  cursor-pointer rounded hover:bg-secondary transition-colors"
                     >
                       Choose another card
                     </button>

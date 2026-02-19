@@ -5,9 +5,9 @@ import TarotFan from "@/components/TarotFan";
 export default function Home() {
   return (
 
-    <div className="min-h-screen bg-[#f0ead8] lg:bg-[#282829] flex justify-center">
+    <div className="min-h-screen bg-[#EAEBD8] lg:bg-[#282829] flex justify-center">
       
-      <div className="w-full max-w-[1200px] bg-[#f0ead8] min-h-screen flex flex-col items-center overflow-x-hidden shadow-2xl relative">
+      <div className="w-full max-w-[1200px] bg-[#EAEBD8] min-h-screen flex flex-col items-center overflow-x-hidden shadow-2xl relative">
         
         <Header />
 
@@ -33,11 +33,11 @@ export default function Home() {
               <br className="hidden md:inline" /> understanding, and the message that is waiting for you.
             </p>
 
-            <p>
+            <div>
               Ask for guidance.
               Open to receive.
               <p className="italic"> Pick a card.</p>
-            </p>
+            </div>
           </div>
 
           {/* --- БЛОК З ВІЯЛОМ --- */}
